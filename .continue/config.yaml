@@ -1,0 +1,8 @@
+models:
+  - id: mistral-ollama
+    name: Mistral 7B via Ollama
+    provider: openai
+    model: mistral
+    apiBase: http://localhost:11434/v1
+    apiKey: ollama
+    default: true

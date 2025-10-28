@@ -1,0 +1,26 @@
+{
+  "name": "sovereignfinancialnavigator",
+  "version": "1.0.0",
+  "description": "This project provides a starting point for United States citizens who are interested in understanding the process of correcting their status to that of a State National. We provide educational resources and a collaborative space for sharing information.",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs",
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepare": "husky",
+    "check-outdated": "npm outdated --prefix frontend && python -m pip list --outdated --python backend/venv/Scripts/python"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@semantic-release/changelog": "^6.0.3",
+    "@semantic-release/git": "^10.0.1",
+    "@semantic-release/github": "^12.0.0",
+    "husky": "^9.1.7",
+    "prettier": "^3.6.2",
+    "semantic-release": "^25.0.1"
+  }
+}
