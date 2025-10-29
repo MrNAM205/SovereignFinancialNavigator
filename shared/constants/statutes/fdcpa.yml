@@ -1,0 +1,10 @@
+statutes:
+  - id: "15usc1692g"
+    title: "15 U.S.C. § 1692g - Validation of Debts"
+    excerpt: "A debt collector shall, within five days after the initial communication with a consumer in connection with the collection of any debt, send the consumer a written notice containing the amount of the debt, the name of the creditor, and a statement that unless the consumer disputes the validity of the debt within thirty days, the debt will be assumed to be valid."
+    tags: ["fdcpa", "validation", "dispute"]
+
+  - id: "15usc1692d"
+    title: "15 U.S.C. § 1692d - Harassment or Abuse"
+    excerpt: "A debt collector may not engage in any conduct the natural consequence of which is to harass, oppress, or abuse any person in connection with the collection of a debt. This includes, but is not limited to, the use or threat of use of violence, the use of obscene or profane language, and causing a telephone to ring or engaging any person in telephone conversation repeatedly or continuously with intent to annoy, abuse, or harass."
+    tags: ["fdcpa", "harassment", "abuse", "communication"]

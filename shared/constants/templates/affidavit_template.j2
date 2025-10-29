@@ -1,0 +1,14 @@
+AFFIDAVIT OF SOVEREIGN REMEDY
+
+I, {{ user_name }}, residing at {{ user_address }}, hereby affirm the following:
+
+That I have engaged in lawful remedy with {{ creditor_name }}, located at {{ creditor_address }}, and that the following sovereign actions have been taken:
+
+{% for event in events %}
+- On {{ event.timestamp.strftime('%B %d, %Y') }}, I performed the action: "{{ event.action }}" as part of the {{ event.stage | upper }} stage.
+{% endfor %}
+
+This affidavit is executed on {{ date }} in full knowledge of my rights and authorship.
+
+Signed,
+{{ user_name }}
