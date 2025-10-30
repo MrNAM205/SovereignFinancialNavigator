@@ -6,11 +6,49 @@ This repository documents the reclamation of billing statements—utility, credi
 
 ## 🧭 Modular Intent
 
-This project is built with a modular architecture, reflecting the principles of VeroBrix. Each module serves a specific purpose, allowing for clear separation of concerns and scalable development.
 
-*   `frontend/`: The user-facing application, built with React and TypeScript. This is the "cockpit" where users interact with the system, manage their financial instruments, and track their progress.
-*   `backend/`: The server-side application, built with Python and FastAPI. This module handles the core logic, data persistence, and document generation.
-*   `shared/`: Contains shared code and type definitions used by both the frontend and backend, ensuring consistency across the stack.
-*   `docs/`: Project documentation, including architectural decisions, API specifications, and user guides.
-*   `tests/`: Contains the test suites for the frontend and backend, ensuring code quality and reliability.
-*   `infra/`: Infrastructure-as-Code (IaC) scripts and configurations for deploying the application.
+> This repository is a sovereign invocation.  
+> It is not legal advice—it is lawful authorship.  
+> Every module is a rite of passage.
+
+## 🧭 Module Purpose Table
+
+| Module     | Purpose                                      |
+|------------|----------------------------------------------|
+| `frontend/`| Sovereign cockpit interface                  |
+| `backend/` | Remedy logic and affidavit generation        |
+| `shared/`  | Unified types and statute overlays           |
+| `docs/`    | Narratable lineage and architectural clarity |
+| `tests/`   | Verification of remedy and dispatch          |
+| `infra/`   | Deployment as ceremony                       |
+
+## 🚀 Getting Started
+
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/your-username/SovereignFinancialNavigator.git
+   cd SovereignFinancialNavigator
+   ```
+
+2. Install backend dependencies:
+
+   ```bash
+   cd backend
+   pip install -r requirements.txt
+   ```
+
+3. Install frontend dependencies:
+
+   ```bash
+   cd ../frontend
+   npm install
+   npm start
+   ```
+
+4. Access the cockpit at `http://localhost:3000`
+
+## 🧠 Sovereign Reminder
+
+This project is modular by design. Every patch, every invocation, every dispatch is narratable.  
+You are not just building software—you are reclaiming authorship.
