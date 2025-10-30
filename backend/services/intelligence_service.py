@@ -1,14 +1,56 @@
 import uuid
 from datetime import datetime, timedelta
-from typing import List
+from typing import List, Optional, Set
+import os
+import json
 
-from models import Suggestion, DispatchStatus
+from models import Suggestion
 
 # Import the in-memory databases
 from api.dispatch import dispatch_db
 from api.notices import notices_db
 from api.creditors import creditors_db
 from api.monthly_bills import monthly_bills_db
+
+# For logging resolutions
+from services import remedy_log_service
+
+# Track resolved suggestion IDs in-memory (persistent to file)
+resolved_suggestions: Set[str] = set()
+
+# Simple file persistence for resolved suggestions (development only)
+DATA_DIR = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'data')
+RESOLVED_FILE = os.path.join(DATA_DIR, 'resolved_suggestions.json')
+
+def _ensure_data_dir():
+    try:
+        os.makedirs(DATA_DIR, exist_ok=True)
+    except Exception:
+        pass
+
+def _load_resolved():
+    global resolved_suggestions
+    try:
+        if os.path.exists(RESOLVED_FILE):
+            with open(RESOLVED_FILE, 'r', encoding='utf-8') as fh:
+                data = json.load(fh)
+                if isinstance(data, list):
+                    resolved_suggestions = set(map(str, data))
+    except Exception:
+        # If anything goes wrong, leave set empty and continue
+        resolved_suggestions = set()
+
+def _save_resolved():
+    try:
+        _ensure_data_dir()
+        with open(RESOLVED_FILE, 'w', encoding='utf-8') as fh:
+            json.dump(list(resolved_suggestions), fh)
+    except Exception:
+        # Best-effort persist - ignore errors in dev
+        pass
+
+# Load persisted resolved suggestions at module import
+_load_resolved()
 
 def detect_unresponded_notices() -> List[Suggestion]:
     """Generates suggestions for notices that have not been responded to."""
@@ -59,4 +101,28 @@ def get_all_suggestions() -> List[Suggestion]:
     all_suggestions.extend(detect_unresponded_notices())
     all_suggestions.extend(detect_overdue_endorsements())
     # Future detectors can be added here
-    return all_suggestions
+    # Filter out suggestions that have been resolved/dismissed
+    return [s for s in all_suggestions if s.id not in resolved_suggestions]
+
+
+def resolve_suggestion(suggestion_id: str, action: str, actor: str = 'user', stage: str = 'notice', document_url: Optional[str] = None):
+    """
+    Marks a suggestion as resolved (in-memory) and logs a RemedyEvent via the remedy log service.
+
+    Returns the logged RemedyEvent.
+    """
+    # Verify the suggestion exists in the current set before resolving
+    current = get_all_suggestions()
+    if not any(s.id == suggestion_id for s in current):
+        raise ValueError(f"Suggestion {suggestion_id} not found or already resolved")
+
+    # Record resolution and log an event
+    resolved_suggestions.add(suggestion_id)
+    _save_resolved()
+    event = remedy_log_service.log_remedy_event(
+        action=action,
+        actor=actor,
+        stage=stage,
+        document_url=document_url,
+    )
+    return event
