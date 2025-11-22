@@ -1,0 +1,44 @@
+Sample Utility Bill
+
+Account holder:
+  Name: Jane Q. Citizen
+  Address: 123 Liberty Ave
+           Apt 4B
+           Anytown, ST 12345
+
+Account Number: 000-123-456
+Billing Date: 2025-10-01
+Due Date: 2025-10-25
+
+Billing Summary:
+  Previous Balance:          $78.50
+  Payments Received:         -$78.50
+  Adjustments:               $0.00
+  Current Charges:           $112.34
+
+  Total Amount Due:          $112.34
+
+Detail of Current Charges:
+  Electricity Service (Meter 001)
+    09/01/2025 - 09/30/2025    500 kWh  @ $0.15/kWh   $75.00
+  Service Charge                                      $10.00
+  Distribution Charge                                  $15.00
+  Taxes and Fees                                       $12.34
+
+Past Due Information:
+  None. Your account is current.
+
+Payment Options:
+  - Online: https://example-utility.example/pay
+  - By mail: Utility Company, PO Box 1000, Anytown, ST 12345
+  - By phone: (555) 123-4567
+
+Contact Information:
+  Utility Company
+  1 Utility Plaza
+  Anytown, ST 12345
+  Customer Service: (555) 123-4567
+  Hours: M-F 8:00am - 6:00pm
+
+Notes:
+  This is a sample bill for testing purposes only. It is not a real account or financial instrument.
